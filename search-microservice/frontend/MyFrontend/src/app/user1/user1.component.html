@@ -1,0 +1,93 @@
+<html>
+<head></head>
+<body >
+  <div class="position">
+    <div class="modify">
+      <h2>Search Flights</h2> 
+    </div>
+    <br>
+  </div>
+  <div class="position2">
+    <b>Departure_Date:</b><input type="date" [(ngModel)]='departure' id="id" value="departure" placeholder="Enter your departure date">
+
+  </div><br>
+  
+
+
+
+  <form class="position">
+      
+    <mat-form-field appearance="fill">
+      <mat-label ><b>From:</b></mat-label>
+      <mat-select matNativeControl [(ngModel)]='selectedvalue1' name="flight"> 
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let flight of flights" [value]="flight.value" >
+          {{flight.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    
+
+    <mat-form-field appearance="fill">
+      <mat-label><b>To:</b></mat-label>
+      <mat-select matNativeControl [(ngModel)]='selectedvalue' name="flight"> 
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let flight of flights1" [value]="flight.value" >
+          {{flight.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+  
+    <mat-form-field appearance="fill">
+      <mat-label><b>Type:</b></mat-label>
+      <mat-label></mat-label>
+      <mat-select matNativeControl [(ngModel)]='selectedvalue2' name="flight"> 
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let flight of type11" [value]="flight.value" >
+          {{flight.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br><br>
+  <div class="example-button-row">
+      <button (click)='getData()' mat-raised-button>Search</button>
+  </div>
+        
+  </form>
+
+    <br><br>
+  
+  <div class="position1" >
+
+    <table mat-table class="mat-elevation-z8" border="1">
+      <tr>
+        <ng-container matColumnDef="position">
+        <th mat-header-cell>Flight_Id</th>
+        <th mat-header-cell>Flight_Name</th>
+        <th mat-header-cell>From</th>
+        <th mat-header-cell>To</th>
+        <th mat-header-cell>Starting_Date</th>
+        <th mat-header-cell>Price</th>
+        <th mat-header-cell>Class</th>
+        </ng-container>
+      </tr>
+      <tr *ngFor="let item of api.users">
+        <ng-container matColumnDef="position">
+        <td mat-cell>{{item.Flight_id}}</td>
+        <td mat-cell>{{item.name}}</td>
+        <td mat-cell>{{item.starting}}</td>
+        <td mat-cell>{{item.ending}}</td>
+        <td mat-cell>{{item.departure}}</td>
+        <td mat-cell>{{item.total}}</td>
+        <td mat-cell>{{item.type1}}</td>
+        <td><div class="example-button-row">
+        <button mat-stroked-button color="primary" (click)="send()">Book</button>
+        </div></td>
+        </ng-container>
+      </tr>
+    </table>
+
+  </div>
+</body>
+</html>
